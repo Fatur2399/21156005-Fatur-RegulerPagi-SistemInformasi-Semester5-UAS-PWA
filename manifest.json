@@ -1,0 +1,28 @@
+{
+  "name": "Fatkhurrohman - Mahasiswa",
+  "short_name": "Fatkhurrohman",
+  "description": "Portofolio dan Komentar",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3498db",
+  "icons": [
+    {
+      "src": "/images/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "form_factor": {
+    "desktop": {
+      "start_url": "/desktop.html"
+    },
+    "lebar": {
+      "start_url": "/lebar.html"
+    }
+  },
+
+  "splash_pages": null,
+  "prefer_related_applications": false
+}

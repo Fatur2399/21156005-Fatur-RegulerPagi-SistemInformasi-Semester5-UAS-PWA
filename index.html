@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#317EFB" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fatkhurrohman - Mahasiswa</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .then(function (registration) {
+            console.log("Service Worker berhasil terdaftar:", registration);
+          })
+          .catch(function (error) {
+            console.error("Gagal mendaftarkan Service Worker:", error);
+          });
+      }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-messaging.js"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="main-container">
+        <div class="nav">
+          <div class="logo">
+            <a href="/">FR</a>
+          </div>
+
+          <nav>
+            <ul>
+              <li><a href="#home">Portofolio</a></li>
+              <li><a href="#komentar">Komentar</a></li>
+              <li>
+                <a href="/resume.pdf" target="_blank">
+                  <button class="btn">Download CV</button>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="burger">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="line-3"></div>
+          </div>
+        </div>
+
+        <section id="hero">
+          <div class="hero-left">
+            <h3 class="pre-title">my name</h3>
+            <h1 class="hero-name">Fatkhur<span>Rohman</span></h1>
+            <p>Selamat Datang di halaman web saya...</p>
+          </div>
+          <br />
+          <div id="token"></div>
+          <div id="msg"></div>
+          <div id="notis"></div>
+          <div id="err"></div>
+          <button id="tombol">Allo Push Notifications</button>
+          <div class="hero-right">
+            <img src="./images/hero.svg" alt="Person Standing" />
+          </div>
+        </section>
+      </div>
+    </header>
+    <!-- End of Header -->
+
+    <!-- Service -->
+    <section id="home">
+      <div class="home main-container">
+        <h3 class="pre-title">Portofolio</h3>
+        <h1 class="section-title home-title">Portofolio</h1>
+
+        <div class="grid-3">
+          <!-- Service 1 -->
+          <div class="home">
+            <div class="home-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 0c-3.148 0-6 2.553-6 5.702 0 4.682 4.783 5.177 6 12.298 1.217-7.121 6-7.616 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm12 16l-6.707-2.427-5.293 2.427-5.581-2.427-6.419 2.427 4-9 3.96-1.584c.38.516.741 1.08 1.061 1.729l-3.523 1.41-1.725 3.88 2.672-1.01 1.506-2.687-.635 3.044 4.189 1.789.495-2.021.465 2.024 4.15-1.89-.618-3.033 1.572 2.896 2.732.989-1.739-3.978-3.581-1.415c.319-.65.681-1.215 1.062-1.731l4.021 1.588 3.936 9z"
+                />
+              </svg>
+            </div>
+            <h4>Tempat, tanggal lahir...</h4>
+            <p>Tegal 15 Juni 2006</p>
+          </div>
+          <!-- Service 2 -->
+          <div class="home">
+            <div class="home-icon">
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              >
+                <path
+                  d="M6 23h-3v-10l8.991-8.005 9.009 8.005v10h-3v-9h-12v9zm1-2h10v2h-10v-2zm0-3h10v2h-10v-2zm10-3v2h-10v-2h10zm-5-14.029l12 10.661-1.328 1.493-10.672-9.481-10.672 9.481-1.328-1.493 12-10.661z"
+                />
+              </svg>
+            </div>
+            <h4>Alamat</h4>
+            <p>Desa Bulakwaru RT08/01 Kecamatan Tarub</p>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="home">
+            <div class="home-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 21h-4v-11h4v11zm7-11h-4v11h4v-11zm7 0h-4v11h4v-11zm2 12h-22v2h22v-2zm-23-13h24l-12-9-12 9z"
+                />
+              </svg>
+            </div>
+            <h4>Sekolah</h4>
+            <p>STMIK Tegal</p>
+          </div>
+          <!-- Service 4 -->
+          <div class="home">
+            <div class="home-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10.26 4.171c-.58-.286-1.093-.517-1.581-.719.77-2.08 1.882-3.452 3.321-3.452 1.402 0 2.494 1.301 3.26 3.292-.492.211-.998.447-1.572.739-.588-1.567-1.258-2.275-1.688-2.275-.442 0-1.14.75-1.74 2.415zm1.74 18.073c-.429 0-1.1-.708-1.688-2.275-.58.295-1.081.528-1.572.739.767 1.991 1.858 3.292 3.26 3.292 1.439 0 2.551-1.372 3.321-3.452-.485-.201-.997-.431-1.581-.719-.6 1.665-1.298 2.415-1.74 2.415zm-4.708-2.216c-1.917.705-4.778 1.392-5.916-.317-.562-.845-.771-2.468 1.42-5.408.582-.78 1.254-1.545 1.937-2.249 1.531-1.554 3.256-3.05 5.505-4.598-1.083-.596-2.264-1.166-3.416-1.591-1.18-.434-2.219-.675-3.015-.675-.508 0-.886.107-1.009.289-.131.192-.138.783.445 1.842l.21-.012c1.048 0 1.897.865 1.897 1.932s-.85 1.932-1.897 1.932-1.897-.865-1.897-1.932c0-.345.089-.669.246-.95-1.11-1.96-.881-3.139-.419-3.815.324-.476 1.009-1.042 2.424-1.042 2.514 0 5.901 1.66 8.082 2.946 2.214-1.363 5.717-3.16 8.304-3.16 1.421 0 2.106.581 2.431 1.069.562.845.771 2.468-1.42 5.407-3.084 4.137-9.216 8.606-13.912 10.332zm12.538-11.394c1.506-2.019 1.552-3.082 1.366-3.361-.126-.189-.492-.298-1.003-.298-1.953 0-4.926 1.459-6.638 2.447 1.265.837 2.445 1.719 3.522 2.617-.407.413-.834.819-1.271 1.211-1.195-.984-2.523-1.947-3.9-2.811-1.581 1.037-3.173 2.254-4.603 3.551 1.075.951 2.356 1.949 3.721 2.873-.522.331-1.05.648-1.652.98l-.013-.009c-1.144-.811-2.271-1.701-3.316-2.632-2.818 2.878-3.612 4.964-3.239 5.525.126.189.492.298 1.003.298 2.35 0 6.08-2.017 8.287-3.464 2.709-1.776 5.799-4.328 7.736-6.927zm2.377 7.091c.141-.27.22-.577.22-.903 0-1.067-.849-1.932-1.897-1.932s-1.897.865-1.897 1.932.849 1.932 1.897 1.932l.258-.018c.553 1.024.544 1.598.415 1.787-.124.181-.501.288-1.009.288-1.602 0-3.833-.945-5.27-1.658-.48.342-1.077.748-1.659 1.119 1.926 1.037 4.758 2.295 6.929 2.295 1.415 0 2.1-.566 2.424-1.042.461-.674.69-1.85-.411-3.8z"
+                />
+              </svg>
+            </div>
+            <h4>Jurusan</h4>
+            <p>Sistem Informasi</p>
+          </div>
+          <!-- Service 5 -->
+          <div class="home">
+            <div class="home-icon">
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              >
+                <path
+                  d="M18 24h-12c-1.104 0-2-.896-2-2v-20c0-1.104.896-2 2-2h12c1.104 0 2 .896 2 2v20c0 1.104-.896 2-2 2zm1-5.083h-14v3.083c0 .552.449 1 1 1h12c.552 0 1-.448 1-1v-3.083zm-7 3c-.553 0-1-.448-1-1s.447-1 1-1c.552 0 .999.448.999 1s-.447 1-.999 1zm7-17h-14v13h14v-13zm-1-3.917h-12c-.551 0-1 .449-1 1v1.917h14v-1.917c0-.551-.448-1-1-1zm-4.5 1.917h-3c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3c.276 0 .5.224.5.5s-.224.5-.5.5z"
+                />
+              </svg>
+            </div>
+            <h4>No.Whatssapp</h4>
+            <p>083831135445</p>
+          </div>
+          <!-- Service 6 -->
+          <div class="home">
+            <div class="home-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.829 6.302c-.738-.034-.96-.04-2.829-.04s-2.09.007-2.828.04c-1.899.087-2.783.986-2.87 2.87-.033.738-.041.959-.041 2.828s.008 2.09.041 2.829c.087 1.879.967 2.783 2.87 2.87.737.033.959.041 2.828.041 1.87 0 2.091-.007 2.829-.041 1.899-.086 2.782-.988 2.87-2.87.033-.738.04-.96.04-2.829s-.007-2.09-.04-2.828c-.088-1.883-.973-2.783-2.87-2.87zm-2.829 9.293c-1.985 0-3.595-1.609-3.595-3.595 0-1.985 1.61-3.594 3.595-3.594s3.595 1.609 3.595 3.594c0 1.985-1.61 3.595-3.595 3.595zm3.737-6.491c-.464 0-.84-.376-.84-.84 0-.464.376-.84.84-.84.464 0 .84.376.84.84 0 .463-.376.84-.84.84zm-1.404 2.896c0 1.289-1.045 2.333-2.333 2.333s-2.333-1.044-2.333-2.333c0-1.289 1.045-2.333 2.333-2.333s2.333 1.044 2.333 2.333zm-2.333-12c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.958 14.886c-.115 2.545-1.532 3.955-4.071 4.072-.747.034-.986.042-2.887.042s-2.139-.008-2.886-.042c-2.544-.117-3.955-1.529-4.072-4.072-.034-.746-.042-.985-.042-2.886 0-1.901.008-2.139.042-2.886.117-2.544 1.529-3.955 4.072-4.071.747-.035.985-.043 2.886-.043s2.14.008 2.887.043c2.545.117 3.957 1.532 4.071 4.071.034.747.042.985.042 2.886 0 1.901-.008 2.14-.042 2.886z"
+                />
+              </svg>
+            </div>
+            <h4>Instagram</h4>
+            <p>@Zoepupu2399</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Service end -->
+
+    <!-- Komentar -->
+    <section id="komentar">
+      <div class="komentar main-container">
+        <h3 class="pre-title">Komentar</h3>
+        <h1 class="section-title komentar-title">Komentar</h1>
+
+        <div class="grid-3">
+          <!-- Form Komentar -->
+          <div class="komentar-form">
+            <form id="commentForm">
+              <div>
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div>
+                <label for="comment">Komentar:</label>
+                <textarea id="comment" name="comment" required></textarea>
+              </div>
+              <div>
+                <button type="submit" class="btn">Kirim Komentar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tambahkan skrip JavaScript di sini -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const commentForm = document.getElementById("commentForm");
+
+        commentForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Ambil nilai dari input formulir
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const commentText = document.getElementById("comment").value;
+
+          // Simpan komentar ke IndexedDB
+          saveCommentToIndexedDB(name, email, commentText);
+
+          // Clear formulir setelah mengirim komentar
+          commentForm.reset();
+        });
+
+        // Fungsi untuk menyimpan komentar ke IndexedDB
+        function saveCommentToIndexedDB(name, email, comment) {
+          // Buka atau buat database IndexedDB
+          const request = indexedDB.open("komentarDB", 1);
+
+          request.onupgradeneeded = function (event) {
+            const db = event.target.result;
+
+            // Buat objek penyimpanan (store) jika belum ada
+            if (!db.objectStoreNames.contains("komentarPublik")) {
+              db.createObjectStore("komentarPublik", { autoIncrement: true });
+            }
+          };
+
+          request.onsuccess = function (event) {
+            const db = event.target.result;
+
+            // Buka transaksi dan dapatkan objek penyimpanan (store)
+            const transaction = db.transaction(["komentarPublik"], "readwrite");
+            const store = transaction.objectStore("komentarPublik");
+
+            // Tambahkan komentar ke objek penyimpanan (store)
+            const newComment = { name: name, email: email, comment: comment };
+            const addRequest = store.add(newComment);
+
+            addRequest.onsuccess = function () {
+              console.log("Komentar berhasil disimpan di IndexedDB");
+            };
+
+            addRequest.onerror = function () {
+              console.error("Gagal menyimpan komentar di IndexedDB");
+            };
+          };
+
+          request.onerror = function () {
+            console.error("Gagal membuka atau membuat database IndexedDB");
+          };
+        }
+      });
+    </script>
+    <script>
+      MsgElem = document.getElementById("msg");
+      TokenElem = document.getElementById("token");
+      NotisElem = document.getElementById("notis");
+      ErrElem = document.getElementById("err");
+      const tombol = document.getElementById("tombol");
+      // Initialize Firebase
+      // TODO: Replace with your project's customized code snippet
+      var config = {
+        apiKey: "AIzaSyBTqe0vEheYxJBazWhgvPlj1eMCP4r-Rao",
+        authDomain: "patur-e1662.firebaseapp.com",
+        projectId: "patur-e1662",
+        storageBucket: "patur-e1662.appspot.com",
+        messagingSenderId: "600530513300",
+        appId: "1:600530513300:web:8c82284f455ff58a527381",
+        measurementId: "G-X8PTBT2NQS",
+      };
+
+      firebase.initializeApp(config);
+      const messaging = firebase.messaging();
+
+      tombol.onclick = function () {
+        messaging
+          .requestPermission()
+          .then(() => {
+            // MsgElem.innerHTML = 'Notification permission granted.';
+            console.log("Notification permission granted.");
+
+            // get the token in the form of promise
+            return messaging.getToken();
+          })
+          .then((token) => {
+            // TokenElem.innerHTML = 'token is : ' + token;
+            console.log(token);
+          })
+          .catch((err) => {
+            ErrElem.innerHTML = ErrElem.innerHTML + "; " + err;
+            console.log("Unable to get permission to notify.", err);
+          });
+      };
+
+      messaging.onMessage(function (payload) {
+        console.log("Message received. ", payload);
+        NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
+        //kenng - foreground notifications
+        const { title, ...options } = payload.notification;
+        navigator.serviceWorker.ready.then((registration) => {
+          registration.showNotification(title, options);
+        });
+      });
+    </script>
+    <!-- Footer -->
+    <footer>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 15.781c-2.084 0-3.781-1.696-3.781-3.781s1.696-3.781 3.781-3.781c1.172 0 2.306.523 3.136 1.669l1.857-1.218c-1.281-1.826-3.133-2.67-4.993-2.67-3.308 0-6 2.692-6 6s2.691 6 6 6c1.881 0 3.724-.859 4.994-2.67l-1.857-1.218c-.828 1.14-1.959 1.669-3.137 1.669z"
+        />
+      </svg>
+      <p>Copyright 2023 by-Fatkhurrohman</p>
+    </footer>
+  </body>
+</html>
